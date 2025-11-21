@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabhjot Singh - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> <!-- Modern font -->
+    <style>
+        /* CSS Variables for consistency - New Color Scheme: Dark Cyber Theme with Neon Accents */
+        :root {
+            --primary-color: #0f172a; /* Dark slate */
+            --secondary-color: #06b6d4; /* Cyan */
+            --accent-color: #10b981; /* Emerald */
+            --text-color: #f1f5f9; /* Light gray */
+            --bg-color: #1e293b; /* Dark blue-gray */
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        /* Basic Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--text-color); background: var(--bg-color); overflow-x: hidden; }
+        a { color: var(--secondary-color); text-decoration: none; transition: var(--transition); }
+        a:hover { color: var(--accent-color); text-decoration: underline; }
+
+        /* Header */
+        header { background: linear-gradient(135deg, var(--primary-color), #334155); color: var(--white); padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 100; box-shadow: var(--shadow); backdrop-filter: blur(10px); }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        nav h1 { font-size: 2rem; font-weight: 700; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 2rem; }
+        nav ul li a { color: var(--white); padding: 0.5rem 1rem; font-weight: 600; border-radius: 20px; transition: var(--transition); }
+        nav ul li a:hover { background: rgba(6, 182, 212, 0.2); }
+
+        /* Sections */
+        section { padding: 6rem 2rem 4rem; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; background: var(--primary-color); margin-bottom: 2rem; position: relative; overflow: hidden; }
+        .home { background: linear-gradient(135deg, var(--bg-color), #0f172a); text-align: center; padding-top: 8rem; }
+        .about, .services, .portfolio, .contact { background: var(--primary-color); }
+
+        /* Home Section */
+        .home h1 { font-size: 4rem; margin-bottom: 1rem; color: var(--white); animation: fadeInUp 1s ease-out; }
+        .home p { font-size: 1.8rem; margin-bottom: 2rem; color: var(--text-color); animation: fadeInUp 1s ease-out 0.2s both; }
+        .btn { background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); color: var(--white); padding: 1rem 2rem; border: none; cursor: pointer; border-radius: 50px; font-weight: 700; font-size: 1.2rem; transition: var(--transition); box-shadow: var(--shadow); animation: fadeInUp 1s ease-out 0.4s both; }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(6, 182, 212, 0.3); }
+
+        /* About Section */
+        .about h2 { font-size: 3.5rem; margin-bottom: 2rem; color: var(--white); text-align: center; position: relative; }
+        .about h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: var(--accent-color); border-radius: 2px; }
+        .about p { font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-color); max-width: 900px; margin-left: auto; margin-right: auto; text-align: center; }
+
+        /* Services Section */
+        .services h2 { text-align: center; font-size: 3.5rem; margin-bottom: 3rem; color: var(--white); position: relative; }
+        .services h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: var(--accent-color); border-radius: 2px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .service { background: linear-gradient(135deg, #334155, #475569); padding: 2rem; text-align: center; border-radius: 20px; box-shadow: var(--shadow); transition: var(--transition); position: relative; overflow: hidden; }
+        .service::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); }
+        .service:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }
+        .service i { font-size: 4rem; color: var(--secondary-color); margin-bottom: 1rem; transition: var(--transition); }
+        .service:hover i { color: var(--accent-color); transform: scale(1.1); }
+        .service h3 { margin-bottom: 1rem; color: var(--white); font-size: 1.5rem; }
+
+        /* Portfolio Section */
+        .portfolio h2 { text-align: center; font-size: 3.5rem; margin-bottom: 3rem; color: var(--white); position: relative; }
+        .portfolio h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: var(--accent-color); border-radius: 2px; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .project { background: linear-gradient(135deg, #334155, #475569); padding: 2rem; border-radius: 20px; box-shadow: var(--shadow); transition: var(--transition); position: relative; overflow: hidden; }
+        .project::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); }
+        .project:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }
+        .project h3 { margin: 1rem 0; color: var(--white); font-size: 1.5rem; }
+        .project a { margin-right: 1rem; font-weight: 600; }
+
+        /* Contact Section */
+        .contact h2 { text-align: center; font-size: 3.5rem; margin-bottom: 3rem; color: var(--white); position: relative; }
+        .contact h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: var(--accent-color); border-radius: 2px; }
+        .contact-content { max-width: 700px; margin: 0 auto; }
+        .contact-form input, .contact-form textarea, .contact-form select { width: 100%; padding: 1rem; margin-bottom: 1.5rem; background: #334155; border: 2px solid #64748b; color: var(--text-color); border-radius: 15px; transition: var(--transition); font-size: 1rem; }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: var(--secondary-color); outline: none; box-shadow: 0 0 10px rgba(6, 182, 212, 0.3); }
+        .contact-form button { background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); color: var(--white); padding: 1rem 2rem; border: none; cursor: pointer; border-radius: 50px; font-weight: 700; font-size: 1.2rem; transition: var(--transition); box-shadow: var(--shadow); }
+        .contact-form button:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(6, 182, 212, 0.3); }
+        .contact-links { text-align: center; margin-top: 3rem; }
+        .contact-links a { margin: 0 1.5rem; font-size: 2rem; color: var(--secondary-color); transition: var(--transition); }
+        .contact-links a:hover { color: var(--accent-color); transform: scale(1.2); }
+
+        /* Footer */
+        footer { text-align: center; padding: 2rem; background: linear-gradient(135deg, var(--primary-color), #334155); color: var(--white); }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { display: none; } /* Hide nav on mobile; add hamburger if needed */
+            .services-grid, .portfolio-grid { grid-template-columns: 1fr; }
+            .home h1 { font-size: 3rem; }
+            .home p { font-size: 1.5rem; }
+            .about h2, .services h2, .portfolio h2, .contact h2 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Prabhjot Singh</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="home">
+        <h1>Hi, I’m Prabhjot Singh</h1>
+        <p>Cyber Security Analyst & Website Designer — I create secure, modern websites.</p>
+        <a href="#portfolio" class="btn">View My Work</a>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I'm Prabhjot Singh, a Cyber Security Analyst and Website Designer passionate about blending security expertise with creative web design. I specialize in threat detection, ethical hacking, and building user-friendly, secure websites.</p>
+        <p><strong>What I Do:</strong> Design responsive websites, conduct security audits, and develop UI/UX solutions.</p>
+        <p><strong>Skills:</strong> Penetration Testing, UI/UX Design, Responsive Web Development.</p>
+        <p><strong>Tools:</strong> Canva, Figma, Adobe XD, Burp Suite, Wireshark.</p>
+    </section>
+
+    <section id="services" class="services">
+        <h2>My Services</h2>
+        <div class="services-grid">
+            <div class="service">
+                <i class="fas fa-code"></i>
+                <h3>Website Design</h3>
+                <p>Custom, responsive websites. Starting at $500.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-rocket"></i>
+                <h3>Landing Page Design</h3>
+                <p>High-converting landing pages. Starting at $300.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-palette"></i>
+                <h3>UI/UX Design</h3>
+                <p>User-centered designs for apps and sites. Starting at $800.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <h2>My Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="project">
+                <h3>Secure E-Commerce Site</h3>
+                <p>Designed and secured an e-commerce platform with PCI compliance and vulnerability assessments.</p>
+                <a href="https://prabhcoding01-droid.github.io/E-Commerce-/">View Live</a> | <a href="https://prabhcoding01-droid.github.io/E-Commerce-/">GitHub</a>
+            </div>
+            <div class="project">
+                <h3>Portfolio Website</h3>
+                <p>Built a responsive portfolio site for a client, integrating SEO and analytics for better performance.</p>
+                <a href="#">View Live</a> | <a href="#">GitHub</a>
+            </div>
+            <div class="project">
+                <h3>Cyber Security Audit Tool</h3>
+                <p>Developed a web-based tool for automated security scans, using Python and JavaScript.</p>
+                <a href="#">View Live</a> | <a href="#">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-content">
+            <form class="contact-form" action="mailto:your-email@example.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <select name="service" required>
+                    <option value="">Select Service</option>
+                    <option value="Website Design">Website Design</option>
+                    <option value="Landing Page">Landing Page</option>
+                    <option value="UI/UX Design">UI/UX Design</option>
+                </select>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Inquiry</button>
+            </form>
+            <div class="contact-links">
+                <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://instagram.com/yourusername"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/yourphonenumber"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Prabhjot Singh. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        });
+
+        document.querySelectorAll('.service, .project').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
